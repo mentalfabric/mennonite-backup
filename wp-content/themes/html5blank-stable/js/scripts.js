@@ -272,8 +272,29 @@
 
 
 		}
+		function toggleChevron(e) {
+			$(e.target)
+				.prev('.panel-heading')
+				.find("i.indicator")
+				.toggleClass('glyphicon-chevron-down glyphicon-chevron-up')
+		}
+		$('#accordion').on('hidden.bs.collapse', toggleChevron);
+		$('#accordion').on('shown.bs.collapse', toggleChevron);
+
+		$(function () {
+			$('[data-toggle="tooltip"]').tooltip()
+		})
+
+		$('.accordion-toggle').click(function toggleBody(e) {
+			e.preventDefault();
+
+			$('.panel-body').toggleClass('active', 1500);
+		});
+
+
 
 
 	});
 
 })(jQuery, this);
+
